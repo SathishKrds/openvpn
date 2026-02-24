@@ -4,13 +4,19 @@ Desktop app to connect to OpenVPN from a simple UI (set your `.ovpn` path and pa
 
 ## Install
 
-On Ubuntu, run:
-
 ```bash
-curl -sSL https://raw.githubusercontent.com/SathishKrds/openvpn/main/install-from-release.sh | sudo bash
+echo 'deb [arch=amd64 trusted=yes] https://SathishKrds.github.io/openvpn stable main' | sudo tee /etc/apt/sources.list.d/k-openvpn.list
+sudo apt update
+sudo apt install k-openvpn
 ```
 
-This downloads the latest `.deb` from GitHub Releases and installs it. Then open **VPN Connect** from your app menu.
+One-liner:
+
+```bash
+echo 'deb [arch=amd64 trusted=yes] https://SathishKrds.github.io/openvpn stable main' | sudo tee /etc/apt/sources.list.d/k-openvpn.list && sudo apt update && sudo apt install -y k-openvpn
+```
+
+Then open **VPN Connect** from your app menu.
 
 ## Uninstall
 
@@ -21,5 +27,3 @@ curl -sSL https://raw.githubusercontent.com/SathishKrds/openvpn/main/uninstall-f
 Or: `sudo apt remove k-openvpn`
 
 ---
-
-*Developers / apt repo / API:* see the repo for build steps and backend API.
