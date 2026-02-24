@@ -38,6 +38,10 @@ cat > "$DEST/package.json" << 'PKGJSON'
 {"name":"k-openvpn","version":"1.0.0","private":true,"main":"main.js","description":"OpenVPN desktop application for Ubuntu 22.04","dependencies":{"electron":"^28.0.0"}}
 PKGJSON
 
+echo "Installing Electron in package (this may take a few minutes)..."
+(cd "$DEST" && npm install --omit=dev --no-package-lock --progress=true)
+echo "Electron installed."
+
 cat > "$BIN_DEST/k-openvpn" << 'BIN'
 #!/bin/bash
 export VPN_CONNECT_STATIC=/usr/share/k-openvpn/dist
