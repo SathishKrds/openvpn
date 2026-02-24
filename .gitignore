@@ -1,0 +1,13 @@
+node_modules/
+vpn-connect/dist/
+vpn-connect/node_modules/
+debian/build/
+apt-repo/
+*.deb
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log

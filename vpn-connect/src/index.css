@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-vpn-bg: #0B0E14;
+  --color-vpn-card: #151921;
+  --color-vpn-border: #232933;
+  --color-vpn-accent: #10B981;
+  --color-vpn-text-muted: #8E9299;
+
+  --color-light-bg: #F3F4F6;
+  --color-light-card: #FFFFFF;
+  --color-light-border: #E5E7EB;
+  --color-light-text-muted: #6B7280;
+}
+

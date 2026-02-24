@@ -1,0 +1,10 @@
+Package: k-openvpn
+Version: 1.0.0
+Section: net
+Priority: optional
+Architecture: amd64
+Depends: openvpn, python3, python3-flask, python3-flask-cors, nodejs
+Maintainer: VPN Connect Maintainers
+Description: OpenVPN desktop application for Ubuntu 22.04
+ VPN Connect is a desktop app to connect and disconnect OpenVPN
+ with a simple UI, saved profiles, and live diagnostics.
