@@ -16,7 +16,17 @@ cp "k-openvpn_${VERSION}_amd64.deb" "$REPO_DIR/pool/main/"
 
 cd "$REPO_DIR"
 dpkg-scanpackages pool/main /dev/null | gzip -9c > dists/stable/main/binary-amd64/Packages.gz
+dpkg-scanpackages pool/main /dev/null > dists/stable/main/binary-amd64/Packages
 cd "$SCRIPT_DIR"
+
+PKG_GZ="$REPO_DIR/dists/stable/main/binary-amd64/Packages.gz"
+PKG="$REPO_DIR/dists/stable/main/binary-amd64/Packages"
+MD5_GZ=$(md5sum "$PKG_GZ" | cut -d' ' -f1)
+SHA256_GZ=$(sha256sum "$PKG_GZ" | cut -d' ' -f1)
+SIZE_GZ=$(wc -c < "$PKG_GZ")
+MD5_PKG=$(md5sum "$PKG" | cut -d' ' -f1)
+SHA256_PKG=$(sha256sum "$PKG" | cut -d' ' -f1)
+SIZE_PKG=$(wc -c < "$PKG")
 
 cat > "$REPO_DIR/dists/stable/Release" << EOF
 Origin: k-openvpn
@@ -25,6 +35,13 @@ Codename: stable
 Architectures: amd64
 Components: main
 Description: VPN Connect - OpenVPN desktop app
+Date: $(date -Ru)
+MD5Sum:
+ $MD5_PKG $SIZE_PKG main/binary-amd64/Packages
+ $MD5_GZ $SIZE_GZ main/binary-amd64/Packages.gz
+SHA256:
+ $SHA256_PKG $SIZE_PKG main/binary-amd64/Packages
+ $SHA256_GZ $SIZE_GZ main/binary-amd64/Packages.gz
 EOF
 
 echo ""
