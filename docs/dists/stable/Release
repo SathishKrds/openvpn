@@ -1,0 +1,6 @@
+Origin: k-openvpn
+Label: k-openvpn
+Codename: stable
+Architectures: amd64
+Components: main
+Description: VPN Connect - OpenVPN desktop app

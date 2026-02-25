@@ -28,7 +28,11 @@ Description: VPN Connect - OpenVPN desktop app
 EOF
 
 echo ""
-echo "Done. Apt repo is in: apt-repo/"
+echo "=== Publishing to docs/ (for GitHub Pages) ==="
+rm -rf "$SCRIPT_DIR/docs"
+cp -r "$REPO_DIR/." "$SCRIPT_DIR/docs/"
+echo ""
+echo "Done. Apt repo is in: apt-repo/  (also copied to docs/)"
 echo ""
 echo "To let users run:  sudo apt install k-openvpn"
 echo "1. Upload the contents of apt-repo/ to a web server or GitHub Pages."

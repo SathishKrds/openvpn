@@ -3,7 +3,9 @@ vpn-connect/dist/
 vpn-connect/node_modules/
 debian/build/
 apt-repo/
+!docs/
 *.deb
+!docs/**/*.deb
 __pycache__/
 *.pyc
 .env
