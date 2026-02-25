@@ -4,10 +4,10 @@ Architecture: amd64
 Maintainer: VPN Connect Maintainers
 Depends: openvpn, python3, python3-flask, python3-flask-cors, nodejs
 Filename: pool/main/k-openvpn_1.0.0_amd64.deb
-Size: 80923480
-MD5sum: 1c482f6c22d9a885210288f3918c5dbb
-SHA1: 233b6497bf8e742389cc55c83d9c87499f22c92a
-SHA256: 7ddb3d50fa03580723bd891e5981d52464db6db1148a51b8d8a775ed9b573a0d
+Size: 80922236
+MD5sum: 7604a3f944ac2c4a7007835f0d578e89
+SHA1: fde6d3216a3e5d3959563a6b49b8b604ca1de04a
+SHA256: 45968f9640cd6969c481f41c6991cb74f76a857a1bc50b528200baac5e4bd2f6
 Section: net
 Priority: optional
 Description: OpenVPN desktop application for Ubuntu 22.04

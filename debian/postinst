@@ -4,4 +4,8 @@ cd /usr/share/k-openvpn && npm install --omit=dev --no-audit --no-fund 2>/dev/nu
 if command -v update-desktop-database >/dev/null 2>&1; then
   update-desktop-database /usr/share/applications 2>/dev/null || true
 fi
+echo ""
+echo "✔  VPN Connect installed successfully."
+echo "   Open 'VPN Connect' from your app menu or run: k-openvpn"
+echo ""
 exit 0
