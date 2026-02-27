@@ -27,7 +27,9 @@ if [ ! -x "$ELECTRON" ]; then
 fi
 
 cd "$INSTALL_DIR" || exit 1
-"$ELECTRON" "$INSTALL_DIR"
+
+ELECTRON_FLAGS="--no-sandbox"
+"$ELECTRON" $ELECTRON_FLAGS "$INSTALL_DIR"
 EXIT=$?
 if [ $EXIT -ne 0 ]; then
   show_error "App failed (exit code $EXIT).\n\nLog: $LOG_FILE"

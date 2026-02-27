@@ -35,7 +35,7 @@ sed -i "s|vpn-connect|k-openvpn|g" "$DEST/run.sh"
 sed -i 's|./install.sh|sudo apt install --reinstall k-openvpn|g' "$DEST/run.sh"
 
 cat > "$DEST/package.json" << 'PKGJSON'
-{"name":"k-openvpn","version":"1.0.0","private":true,"main":"main.js","description":"OpenVPN desktop application for Ubuntu 22.04","dependencies":{"electron":"^28.0.0"}}
+{"name":"k-openvpn","version":"1.0.0","private":true,"main":"main.js","description":"OpenVPN desktop application for Ubuntu","dependencies":{"electron":"^28.0.0"}}
 PKGJSON
 
 echo "Installing Electron in package (this may take a few minutes)..."
@@ -53,7 +53,7 @@ chmod +x "$BIN_DEST/k-openvpn"
 cat > "$APP_DEST/k-openvpn.desktop" << 'DESKTOP'
 [Desktop Entry]
 Name=VPN Connect
-Comment=OpenVPN desktop application for Ubuntu 22.04
+Comment=OpenVPN desktop application for Ubuntu
 Exec=/usr/bin/k-openvpn
 Icon=/usr/share/k-openvpn/icon.jpeg
 Terminal=false
@@ -72,7 +72,7 @@ Priority: optional
 Architecture: amd64
 Depends: openvpn, python3, python3-flask, python3-flask-cors, nodejs
 Maintainer: VPN Connect Maintainers
-Description: OpenVPN desktop application for Ubuntu 22.04
+Description: OpenVPN desktop application for Ubuntu
  VPN Connect is a desktop app to connect and disconnect OpenVPN
  with a simple UI, saved profiles, and live diagnostics.
 EOF
