@@ -4,10 +4,10 @@ Codename: stable
 Architectures: amd64
 Components: main
 Description: VPN Connect - OpenVPN desktop app
-Date: Wed, 25 Feb 2026 13:23:27 +0000
+Date: Fri, 27 Feb 2026 05:40:02 +0000
 MD5Sum:
- 5ed695de9a78ad87a2b655eebd8562fb 593 main/binary-amd64/Packages
- 1719785c9cbb515dcb1ee90ec7946445 411 main/binary-amd64/Packages.gz
+ 25c398949ffe3b06604c28a65265aa39 587 main/binary-amd64/Packages
+ 6a79baa511b25f95a77b2e99a96ff911 405 main/binary-amd64/Packages.gz
 SHA256:
- b00f4504d3ec8eb726f16b3c1fe7f69ac95ffc5fab736a21592d3136df37f91e 593 main/binary-amd64/Packages
- d4ab6ab5d7d58d8f3fd3d16745008eb23a5d485545cbd45c4b41f3a461af1cdc 411 main/binary-amd64/Packages.gz
+ 127901de8975c5160e65feb47ba9d3d80ff74c24a0e6c01bec1c6672c7ba91dd 587 main/binary-amd64/Packages
+ afb0a0661f0279687b9f48cc8c02f974c12a4234394f0bd24a48faa6c84952e8 405 main/binary-amd64/Packages.gz

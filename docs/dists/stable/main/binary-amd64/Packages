@@ -1,16 +1,16 @@
 Package: k-openvpn
-Version: 1.0.0
+Version: 1.0.1
 Architecture: amd64
 Maintainer: VPN Connect Maintainers
 Depends: openvpn, python3, python3-flask, python3-flask-cors, nodejs
-Filename: pool/main/k-openvpn_1.0.0_amd64.deb
-Size: 80922236
-MD5sum: 7604a3f944ac2c4a7007835f0d578e89
-SHA1: fde6d3216a3e5d3959563a6b49b8b604ca1de04a
-SHA256: 45968f9640cd6969c481f41c6991cb74f76a857a1bc50b528200baac5e4bd2f6
+Filename: pool/main/k-openvpn_1.0.1_amd64.deb
+Size: 80920784
+MD5sum: 513240b201646822480e1d4b04394e56
+SHA1: d95dea0b2f3929f0b5dad8b8038a33db5d66d225
+SHA256: 31ffcab425a69a2ec0591b5f1ce24aea2b9613c8e1cb640e6ddc782979d0257f
 Section: net
 Priority: optional
-Description: OpenVPN desktop application for Ubuntu 22.04
+Description: OpenVPN desktop application for Ubuntu
  VPN Connect is a desktop app to connect and disconnect OpenVPN
  with a simple UI, saved profiles, and live diagnostics.
 
