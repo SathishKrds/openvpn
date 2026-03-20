@@ -256,13 +256,15 @@ def run_vpn(config_path: str, password: str):
         with state["lock"]:
             state["askpass_file"] = askpass.name
 
+        # OpenVPN's --version exits with code 1 on many builds; do not use returncode alone.
         sudo_probe = subprocess.run(
             ["sudo", "-n", "/usr/sbin/openvpn", "--version"],
             capture_output=True,
             text=True,
             timeout=8,
         )
-        if sudo_probe.returncode != 0:
+        combined = (sudo_probe.stderr or "") + (sudo_probe.stdout or "")
+        if "password is required" in combined.lower():
             append_log(
                 "OpenVPN needs admin permission but passwordless sudo is not configured for this app.",
                 "ERROR",
