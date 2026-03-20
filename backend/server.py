@@ -256,8 +256,25 @@ def run_vpn(config_path: str, password: str):
         with state["lock"]:
             state["askpass_file"] = askpass.name
 
+        sudo_probe = subprocess.run(
+            ["sudo", "-n", "/usr/sbin/openvpn", "--version"],
+            capture_output=True,
+            text=True,
+            timeout=8,
+        )
+        if sudo_probe.returncode != 0:
+            append_log(
+                "OpenVPN needs admin permission but passwordless sudo is not configured for this app.",
+                "ERROR",
+            )
+            append_log(
+                "Fix: run installer again or add a sudoers rule for /usr/sbin/openvpn.",
+                "ERROR",
+            )
+            return
+
         cmd = [
-            "sudo", "openvpn",
+            "sudo", "-n", "/usr/sbin/openvpn",
             "--config", config_path,
             "--askpass", askpass.name,
             "--auth-nocache",
@@ -448,7 +465,7 @@ def api_disconnect():
         except Exception:
             pass
     try:
-        subprocess.run(["sudo", "killall", "openvpn"], capture_output=True, timeout=5)
+        subprocess.run(["sudo", "-n", "killall", "openvpn"], capture_output=True, timeout=5)
     except Exception:
         pass
     cleanup_askpass()
