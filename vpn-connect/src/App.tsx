@@ -16,7 +16,8 @@ import {
   Moon,
   X,
   Check,
-  Zap
+  Zap,
+  Trash2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -76,6 +77,29 @@ export default function App() {
   const logContainerRef = useRef<HTMLDivElement>(null);
   const userAtBottomRef = useRef(true);
   const hasLoadedSavedRef = useRef(false);
+
+  const removeSavedProfile = async (pathToRemove: string) => {
+    try {
+      const res = await fetch(`${API_BASE}/api/saved-profiles/delete`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ config_path: pathToRemove }),
+      });
+      const data = await res.json();
+      if (!data.ok) {
+        setApiError(data.error || 'Could not remove saved profile.');
+        return;
+      }
+      setSavedProfiles(prev => prev.filter(p => p.config_path !== pathToRemove));
+      if (configPath === pathToRemove) {
+        setConfigPath('');
+        setPassword('');
+      }
+      setApiError(null);
+    } catch {
+      setApiError('Could not remove saved profile.');
+    }
+  };
 
   useEffect(() => {
     const fetchStatus = async () => {
@@ -345,7 +369,7 @@ export default function App() {
                 const name = profile.name || profile.config_path.split('/').pop() || profile.config_path;
                 return (
                   <div
-                    key={idx}
+                    key={`${profile.config_path}-${idx}`}
                     className={`${themeClasses.cardInner} border ${themeClasses.border} rounded-xl p-4 flex items-center justify-between gap-4`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
@@ -358,17 +382,27 @@ export default function App() {
                         </p>
                       </div>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setConfigPath(profile.config_path);
-                        setPassword(profile.password);
-                        setApiError(null);
-                      }}
-                      className={`shrink-0 px-4 py-2 rounded-lg border cursor-pointer ${themeClasses.border} ${themeClasses.cardInner} font-medium text-sm hover:opacity-90 transition-opacity`}
-                    >
-                      Use this profile
-                    </button>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <button
+                        type="button"
+                        title="Remove from saved list"
+                        onClick={() => removeSavedProfile(profile.config_path)}
+                        className={`p-2 rounded-lg border cursor-pointer ${themeClasses.border} ${themeClasses.cardInner} text-red-500/90 hover:opacity-90 transition-opacity`}
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setConfigPath(profile.config_path);
+                          setPassword(profile.password);
+                          setApiError(null);
+                        }}
+                        className={`px-4 py-2 rounded-lg border cursor-pointer ${themeClasses.border} ${themeClasses.cardInner} font-medium text-sm hover:opacity-90 transition-opacity`}
+                      >
+                        Use this profile
+                      </button>
+                    </div>
                   </div>
                 );
               })}

@@ -448,6 +448,30 @@ def api_connect():
     return jsonify({"ok": True})
 
 
+@app.route("/api/saved-profiles/delete", methods=["POST"])
+def api_saved_profiles_delete():
+    data = request.get_json() or {}
+    config_path = (data.get("config_path") or "").strip()
+    if not config_path:
+        return jsonify({"ok": False, "error": "config_path required."}), 400
+    try:
+        if not SAVED_CREDENTIALS_FILE.exists():
+            return jsonify({"ok": True})
+        with open(SAVED_CREDENTIALS_FILE) as f:
+            raw = json.load(f)
+        profiles = raw.get("profiles") or []
+        if not profiles and (raw.get("config_path") or raw.get("password")):
+            profiles = [{"config_path": raw.get("config_path") or "", "password": raw.get("password") or ""}]
+        new_profiles = [p for p in profiles if p.get("config_path") != config_path]
+        SAVED_CREDENTIALS_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(SAVED_CREDENTIALS_FILE, "w") as f:
+            json.dump({"profiles": new_profiles}, f, indent=0)
+        os.chmod(SAVED_CREDENTIALS_FILE, 0o600)
+        return jsonify({"ok": True})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/disconnect", methods=["POST"])
 def api_disconnect():
     with state["lock"]:
