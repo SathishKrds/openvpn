@@ -387,9 +387,10 @@ export default function App() {
                         type="button"
                         title="Remove from saved list"
                         onClick={() => removeSavedProfile(profile.config_path)}
-                        className={`p-2 rounded-lg border cursor-pointer ${themeClasses.border} ${themeClasses.cardInner} text-red-500/90 hover:opacity-90 transition-opacity`}
+                        className={`px-4 py-2 rounded-lg border cursor-pointer ${themeClasses.border} ${themeClasses.cardInner} text-red-500 font-medium text-sm hover:opacity-90 transition-opacity flex items-center gap-2`}
                       >
                         <Trash2 className="w-4 h-4" />
+                        Remove
                       </button>
                       <button
                         type="button"
