@@ -1,13 +1,13 @@
 Package: k-openvpn
-Version: 1.0.1
+Version: 1.0.2
 Architecture: amd64
 Maintainer: VPN Connect Maintainers
 Depends: openvpn, python3, python3-flask, python3-flask-cors, nodejs
-Filename: pool/main/k-openvpn_1.0.1_amd64.deb
-Size: 80920784
-MD5sum: 513240b201646822480e1d4b04394e56
-SHA1: d95dea0b2f3929f0b5dad8b8038a33db5d66d225
-SHA256: 31ffcab425a69a2ec0591b5f1ce24aea2b9613c8e1cb640e6ddc782979d0257f
+Filename: pool/main/k-openvpn_1.0.2_amd64.deb
+Size: 80938164
+MD5sum: 586037745f0b70a6c0d992c2a761f53b
+SHA1: b8bb50ad0c67003838a658bdaeb857275c0271ca
+SHA256: 4072acdaec4d29beeca49df2de4ebd3358fbd4ab93858d842f9dd41a10796330
 Section: net
 Priority: optional
 Description: OpenVPN desktop application for Ubuntu
